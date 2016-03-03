@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package user;
+
+service UserService {
+  rpc FindById (FindByIdRequest) returns (FindByIdResponse);
+}
+
+message FindByIdRequest {
+  string user_id = 1;
+}
+
+message FindByIdResponse {
+  string user_id = 1;
+  string user_name = 2;
+  string user_email = 3;
+}
