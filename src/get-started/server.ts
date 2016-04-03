@@ -1,10 +1,14 @@
-import grpc from 'grpc';
+import grpc, { handleUnaryCall } from 'grpc';
 import faker from 'faker';
 
 import { config } from './config';
 import { UserProto } from './protos/user';
 
-const UserService = {
+interface IUserSerivce {
+  findById: handleUnaryCall<any, any>;
+}
+
+const UserService: IUserSerivce = {
   findById(call, callback) {
     const user = {
       user_id: call.request.user_id,
@@ -17,9 +21,10 @@ const UserService = {
 
 function creatServer() {
   const server = new grpc.Server();
-  server.addService((UserProto as any).UserService.service, UserService);
+  server.addService((UserProto as any).UserServiceDefinition.service, UserService);
   server.bind(`${config.HOST}:${config.PORT}`, grpc.ServerCredentials.createInsecure());
   server.start();
+  console.log(`Server is listening on http://${config.HOST}:${config.PORT}`);
 }
 
 creatServer();
