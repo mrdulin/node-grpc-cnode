@@ -1,11 +1,12 @@
 syntax="proto3";
 
-import "google/protobuf/timestamp.proto";
+import "../share/user.proto";
 
 package topic;
 
 service TopicService {
   rpc GetTopics(GetTopicsRequest) returns (GetTopicsResponse);
+  rpc GetTopicById(GetTopicByIdRequest) returns (GetTopicByIdResponse);
 }
 
 
@@ -23,12 +24,13 @@ message Topic {
   Tab tab = 3;
   string title = 4;
   string content = 5;
-  bool good = 16;
-  bool top = 17;
-  int32 reply_count = 18;
-  int32 visit_count = 19;
-  int64 create_at = 20;
-  int64 last_reply_at = 21;
+  UserBase author = 6;
+  bool good = 7;
+  bool top = 8;
+  int32 reply_count = 9;
+  int32 visit_count = 10;
+  string create_at = 11;
+  string last_reply_at = 12;
 }
 
 message GetTopicsRequest {
@@ -39,6 +41,15 @@ message GetTopicsRequest {
 }
 
 message GetTopicsResponse {
-  repeated Topic datas = 1;
+  repeated Topic data = 1;
+  bool success = 2;
+}
+
+message GetTopicByIdRequest {
+  string id = 1;
+}
+
+message GetTopicByIdResponse {
+  Topic data = 1;
   bool success = 2;
 }

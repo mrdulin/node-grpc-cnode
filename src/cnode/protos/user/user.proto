@@ -1,0 +1,14 @@
+syntax="proto3";
+
+import "../share/topic.proto";
+
+package user;
+
+message User {
+  string loginname = 1;
+  string avatar_url = 2;
+  string githubUsername = 3;
+  int64 create_at = 4;
+  int32 score = 5;
+  repeated TopicBase recent_topics = 6;
+}

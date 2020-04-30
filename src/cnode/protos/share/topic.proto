@@ -1,0 +1,12 @@
+syntax="proto3";
+
+import "./user.proto";
+
+package share;
+
+message TopicBase {
+  string id = 1;
+  UserBase author = 2;
+  string title = 3;
+  string last_reply_at = 4;
+}
