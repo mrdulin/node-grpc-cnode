@@ -1,0 +1,44 @@
+syntax="proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package topic;
+
+service TopicService {
+  rpc GetTopics(GetTopicsRequest) returns (GetTopicsResponse);
+}
+
+
+enum Tab {
+  share = 1;
+  ask = 2;
+  good = 3;
+  job = 4;
+}
+
+
+message Topic {
+  string id = 1;
+  string author_id = 2;
+  Tab tab = 3;
+  string title = 4;
+  string content = 5;
+  bool good = 16;
+  bool top = 17;
+  int32 reply_count = 18;
+  int32 visit_count = 19;
+  int64 create_at = 20;
+  int64 last_reply_at = 21;
+}
+
+message GetTopicsRequest {
+  int32 page = 1;
+  Tab tab = 2;
+  int32 limit = 3;
+  string mdrender = 4;
+}
+
+message GetTopicsResponse {
+  repeated Topic datas = 1;
+  bool success = 2;
+}

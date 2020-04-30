@@ -13,10 +13,10 @@ const UserService: IUserSerivce = {
     const user = {
       user_id: call.request.user_id,
       user_name: faker.name.findName(),
-      user_email: faker.internet.email()
+      user_email: faker.internet.email(),
     };
     callback(null, user);
-  }
+  },
 };
 
 function creatServer() {

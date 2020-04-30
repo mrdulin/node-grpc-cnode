@@ -19,7 +19,7 @@
   "homepage": "https://github.com/mrdulin/nodejs-grpc#readme",
   "dependencies": {
     "@grpc/proto-loader": "^0.4.0",
-    "grpc": "^1.19.0"
+    "grpc": "^1.24.2"
   },
   "devDependencies": {
     "@types/faker": "^4.1.5",
