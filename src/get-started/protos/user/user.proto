@@ -2,16 +2,24 @@ syntax = "proto3";
 
 package user;
 
+import "google/protobuf/empty.proto";
+
 service UserServiceDefinition {
-  rpc FindById (FindByIdRequest) returns (FindByIdResponse);
+  rpc FindById (FindByIdRequest) returns (User);
+  rpc FindAll (google.protobuf.Empty) returns (Users);
 }
 
 message FindByIdRequest {
-  string user_id = 1;
+  string id = 1;
 }
 
-message FindByIdResponse {
-  string user_id = 1;
-  string user_name = 2;
-  string user_email = 3;
+message User {
+  string id = 1;
+  string email = 2;
+  string firstName = 3;
+  string lastName = 4;
+}
+
+message Users {
+  repeated User users = 1;
 }

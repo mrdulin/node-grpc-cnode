@@ -1,16 +1,28 @@
 import grpc from 'grpc';
-
+import express from 'express';
 import { UserProto } from './protos/user';
 
-function createClient() {
-  const client = new (UserProto as any).UserServiceDefinition('localhost:3000', grpc.credentials.createInsecure());
+const app = express();
+const port = 3001;
+const client = new (UserProto as any).UserServiceDefinition('localhost:3000', grpc.credentials.createInsecure());
 
-  client.findById({ user_id: 666 }, (err, response) => {
+app.get('/user/:id', (req, res) => {
+  client.findById({ id: req.params.id }, (err, response) => {
     if (err) {
       return console.error(err);
     }
-    console.log('user: ', response);
+    res.json(response);
   });
-}
+});
+app.get('/users', (req, res) => {
+  client.findAll({}, (err, response) => {
+    if (err) {
+      return console.error(err);
+    }
+    res.json(response);
+  });
+});
 
-createClient();
+app.listen(port, () => {
+  console.log(`RESTful API is ready at http://localhost:${port}`);
+});

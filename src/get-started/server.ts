@@ -6,16 +6,31 @@ import { UserProto } from './protos/user';
 
 interface IUserSerivce {
   findById: handleUnaryCall<any, any>;
+  findAll: handleUnaryCall<any, any>;
+}
+
+const users: any[] = [];
+for (let i = 0; i < 1000; i++) {
+  users.push({
+    id: faker.random.uuid(),
+    email: faker.internet.email(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+  });
 }
 
 const UserService: IUserSerivce = {
   findById(call, callback) {
     const user = {
-      user_id: call.request.user_id,
-      user_name: faker.name.findName(),
-      user_email: faker.internet.email(),
+      id: call.request.id,
+      email: faker.internet.email(),
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
     };
     callback(null, user);
+  },
+  findAll(call, callback) {
+    callback(null, { users });
   },
 };
 
