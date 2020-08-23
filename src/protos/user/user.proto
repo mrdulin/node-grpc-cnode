@@ -1,0 +1,22 @@
+syntax="proto3";
+
+import "../share/topic.proto";
+import "../reply/reply.proto";
+
+package user;
+
+message UserEntity {
+  string id = 1;
+  string loginname = 2;
+  string avatar_url = 3;
+}
+
+message UserDetail {
+  string loginname = 1;
+  string avatar_url = 2;
+  string githubUsername = 3;
+  string create_at = 4;
+  int32 score = 5;
+  repeated TopicBase recent_topics = 6;
+  repeated RecentReply recent_replies = 7;
+}

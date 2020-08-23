@@ -1,0 +1,5 @@
+import "./topic/topic.proto";
+import "./topic/service.proto";
+
+import "./user/user.proto";
+import "./user/service.proto";

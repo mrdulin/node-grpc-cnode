@@ -3,6 +3,7 @@ import * as protoLoader from '@grpc/proto-loader';
 import path from 'path';
 
 import * as topicServiceImpl from './topic/topicServiceImpl';
+import * as userServiceImpl from './user/userServiceImpl';
 
 const PROTO_PATH = path.resolve(__dirname, './index.proto');
 
@@ -14,6 +15,6 @@ const packageDefinition: PackageDefinition = protoLoader.loadSync(PROTO_PATH, {
   oneofs: true,
 });
 const grpcObject: GrpcObject = grpc.loadPackageDefinition(packageDefinition);
-const { topic } = grpcObject;
+const { topic, user } = grpcObject;
 
-export { topic, topicServiceImpl };
+export { topic, user, topicServiceImpl, userServiceImpl };
