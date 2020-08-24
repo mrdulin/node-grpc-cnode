@@ -1,7 +1,7 @@
-syntax="proto3";
+syntax = "proto3";
 
-import "../share/topic.proto";
-import "../reply/reply.proto";
+import "src/protos/share/topic.proto";
+import "src/protos/reply/reply.proto";
 
 package user;
 
@@ -17,6 +17,6 @@ message UserDetail {
   string githubUsername = 3;
   string create_at = 4;
   int32 score = 5;
-  repeated TopicBase recent_topics = 6;
-  repeated RecentReply recent_replies = 7;
+  repeated share.TopicBase recent_topics = 6;
+  repeated reply.RecentReply recent_replies = 7;
 }

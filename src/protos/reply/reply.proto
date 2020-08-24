@@ -1,16 +1,16 @@
-syntax="proto3";
+syntax = "proto3";
 
 package reply;
 
 import "google/protobuf/timestamp.proto";
-import "../shared/user.proto";
+import "src/protos/share/user.proto";
 
 message Reply {
   string id = 1;
   string content = 2;
   google.protobuf.Timestamp create_at = 3;
   string reply_id = 4;
-  UserBase author = 5;
+  share.UserBase author = 5;
   bool is_uped = 6;
   repeated string ups = 7;
 }
@@ -19,5 +19,5 @@ message RecentReply {
   string id = 1;
   string title = 2;
   google.protobuf.Timestamp last_reply_at = 3;
-  UserBase author = 4;
+  share.UserBase author = 4;
 }

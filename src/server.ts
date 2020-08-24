@@ -1,10 +1,12 @@
 import grpc from 'grpc';
 import { config } from './config';
-import { topic, topicServiceImpl, user, userServiceImpl } from './protos';
+import { topic, TopicServiceImpl, user, userServiceImpl } from './protos';
+import { ITopicServiceServer, TopicServiceService } from './protos/topic/service_grpc_pb';
 
 function createServer() {
   const server = new grpc.Server();
-  server.addService((topic as any).TopicService.service, topicServiceImpl);
+  // server.addService((topic as any).TopicService.service, topicServiceImpl);
+  server.addService<ITopicServiceServer>(TopicServiceService, new TopicServiceImpl());
   server.addService((user as any).UserService.service, userServiceImpl);
   server.bind(`${config.HOST}:${config.PORT}`, grpc.ServerCredentials.createInsecure());
   server.start();

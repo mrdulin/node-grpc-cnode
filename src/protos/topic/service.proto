@@ -1,6 +1,8 @@
-syntax="proto3";
+syntax = "proto3";
 
 package topic;
+
+import "src/protos/topic/topic.proto";
 
 service TopicService {
   rpc GetTopics(GetTopicsRequest) returns (GetTopicsResponse);
@@ -19,9 +21,7 @@ message GetTopicsResponse {
   bool success = 2;
 }
 
-message GetTopicByIdRequest {
-  string id = 1;
-}
+message GetTopicByIdRequest { string id = 1; }
 
 message GetTopicByIdResponse {
   Topic data = 1;

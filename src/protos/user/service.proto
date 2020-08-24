@@ -1,22 +1,22 @@
-syntax="proto3";
+syntax = "proto3";
 
 package user;
 
+import "src/protos/user/user.proto";
+
 service UserService {
-  rpc GetUserByLoginname(GetUserByLoginnameRequest) returns (GetUserByLoginnameResponse);
-  rpc ValidateAccessToken(ValidateAccessTokenRequest) returns (ValidateAccessTokenResponse);
+  rpc GetUserByLoginname(GetUserByLoginnameRequest)
+      returns (GetUserByLoginnameResponse);
+  rpc ValidateAccessToken(ValidateAccessTokenRequest)
+      returns (ValidateAccessTokenResponse);
 }
 
-message GetUserByLoginnameRequest {
-  string loginname = 1;
-}
+message GetUserByLoginnameRequest { string loginname = 1; }
 message GetUserByLoginnameResponse {
   UserDetail data = 1;
   bool success = 2;
 }
-message ValidateAccessTokenRequest {
-  string accesstoken = 1;
-}
+message ValidateAccessTokenRequest { string accesstoken = 1; }
 message ValidateAccessTokenResponse {
   string id = 1;
   string loginname = 2;

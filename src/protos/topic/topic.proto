@@ -1,13 +1,14 @@
-syntax="proto3";
+syntax = "proto3";
 
-import "../share/user.proto";
 package topic;
 
+import "src/protos/share/user.proto";
+
 enum Tab {
-  share = 1;
-  ask = 2;
-  good = 3;
-  job = 4;
+  share = 0;
+  ask = 1;
+  good = 2;
+  job = 3;
 }
 
 message Topic {
@@ -16,7 +17,7 @@ message Topic {
   Tab tab = 3;
   string title = 4;
   string content = 5;
-  UserBase author = 6;
+  share.UserBase author = 6;
   bool good = 7;
   bool top = 8;
   int32 reply_count = 9;

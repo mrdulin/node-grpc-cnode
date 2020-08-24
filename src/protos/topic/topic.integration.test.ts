@@ -1,22 +1,23 @@
 import { createServer } from '../../server';
-import { createTopicServiceClient } from '../../utils/test';
+import { createTopicServiceClient, ClientType } from '../../utils/test';
 
 describe('userServiceImpl', () => {
   let server: ReturnType<typeof createServer>;
   let topicServiceClient: ReturnType<typeof createTopicServiceClient>;
   beforeAll(() => {
     server = createServer();
-    topicServiceClient = createTopicServiceClient();
+    topicServiceClient = createTopicServiceClient(ClientType.STATIC);
   });
   afterAll((done) => {
     server.tryShutdown(done);
   });
-  describe('#getUserByLoginname', () => {
-    it('should get user by login name', (done) => {
+  describe('#getTopics', () => {
+    it('should get topics', (done) => {
       topicServiceClient.getTopics({ limit: 1 }, (err, response) => {
         if (err) {
           return done(err);
         }
+        expect(response.data).toHaveLength(1);
         expect(response).toEqual(
           expect.objectContaining({
             data: expect.arrayContaining([
@@ -41,5 +42,9 @@ describe('userServiceImpl', () => {
         done();
       });
     });
+  });
+
+  describe('#getTopicById', () => {
+    it('should get topic by id', () => {});
   });
 });

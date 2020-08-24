@@ -1,25 +1,13 @@
-import axios from 'axios';
-import { config } from '../../config';
+import { ITopicServiceServer } from './service_grpc_pb';
+import { getTopics } from './topicServiceImplDynamic';
+import { GetTopicsRequest, GetTopicsResponse, GetTopicByIdRequest, GetTopicByIdResponse } from './service_pb';
+import { ServerUnaryCall, sendUnaryData } from 'grpc';
 
-const ErrGetTopics = new Error('topicServiceImpl: get topics');
-const ErrGetTopicById = new Error('topicServiceImpl: get topic by id');
-
-export async function getTopics(call, callback) {
-  try {
-    const res = await axios.get(`${config.CNODE_API_URL}/topics`, { params: { ...call.request } });
-    callback(null, res.data);
-  } catch (error) {
-    console.log(error);
-    callback(ErrGetTopics);
+export class TopicServiceImpl implements ITopicServiceServer {
+  public getTopics(call: ServerUnaryCall<GetTopicsRequest>, callback: sendUnaryData<GetTopicsResponse>) {
+    return getTopics(call, callback);
   }
-}
-
-export async function getTopicById(call, callback) {
-  try {
-    const res = await axios.get(`${config.CNODE_API_URL}/topic/${call.request.id}`);
-    callback(null, res.data);
-  } catch (error) {
-    console.log(error);
-    callback(ErrGetTopicById);
+  public getTopicById(call: ServerUnaryCall<GetTopicByIdRequest>, callback: sendUnaryData<GetTopicByIdResponse>) {
+    return this.getTopicById(call, callback);
   }
 }
