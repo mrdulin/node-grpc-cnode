@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package topic;
 
-import "src/protos/share/user.proto";
+import "share/user.proto";
 
 enum Tab {
   share = 0;

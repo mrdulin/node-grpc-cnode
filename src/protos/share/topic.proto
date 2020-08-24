@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "src/protos/share/user.proto";
+import "share/user.proto";
 
 package share;
 

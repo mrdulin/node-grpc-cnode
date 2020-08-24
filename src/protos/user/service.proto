@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user;
 
-import "src/protos/user/user.proto";
+import "user/user.proto";
 
 service UserService {
   rpc GetUserByLoginname(GetUserByLoginnameRequest)

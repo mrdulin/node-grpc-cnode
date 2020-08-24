@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package topic;
 
-import "src/protos/topic/topic.proto";
+import "topic/topic.proto";
 
 service TopicService {
   rpc GetTopics(GetTopicsRequest) returns (GetTopicsResponse);

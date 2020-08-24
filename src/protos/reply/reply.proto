@@ -3,7 +3,7 @@ syntax = "proto3";
 package reply;
 
 import "google/protobuf/timestamp.proto";
-import "src/protos/share/user.proto";
+import "share/user.proto";
 
 message Reply {
   string id = 1;
