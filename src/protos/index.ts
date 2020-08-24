@@ -2,9 +2,12 @@ import grpc, { PackageDefinition, GrpcObject } from 'grpc';
 import * as protoLoader from '@grpc/proto-loader';
 import path from 'path';
 
+// For dynamic code generation
 import * as topicServiceImpl from './topic/topicServiceImplDynamic';
-import { TopicServiceImpl } from './topic/topicServiceImpl';
 import * as userServiceImpl from './user/userServiceImpl';
+
+// For static code generation
+import { TopicServiceImpl } from './topic/topicServiceImpl';
 
 const PROTO_PATH = path.resolve(__dirname, './index.proto');
 

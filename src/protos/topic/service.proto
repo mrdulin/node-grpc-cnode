@@ -11,19 +11,19 @@ service TopicService {
 
 message GetTopicsRequest {
   int32 page = 1;
-  Tab tab = 2;
+  topic.Tab tab = 2;
   int32 limit = 3;
   string mdrender = 4;
 }
 
 message GetTopicsResponse {
-  repeated Topic data = 1;
+  repeated topic.Topic data = 1;
   bool success = 2;
 }
 
 message GetTopicByIdRequest { string id = 1; }
 
 message GetTopicByIdResponse {
-  Topic data = 1;
+  topic.Topic data = 1;
   bool success = 2;
 }

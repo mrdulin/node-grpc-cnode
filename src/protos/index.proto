@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-import "topic/topic.proto";
-import "topic/service.proto";
+import public "topic/topic.proto";
+import public "topic/service.proto";
 
-// import "user/user.proto";
-// import "user/service.proto";
+import public "user/user.proto";
+import public "user/service.proto";
