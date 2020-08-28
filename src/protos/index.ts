@@ -1,9 +1,9 @@
 import * as protoLoader from '@grpc/proto-loader';
-import grpc, {GrpcObject, PackageDefinition} from 'grpc';
+import grpc, { GrpcObject, PackageDefinition } from 'grpc';
 import path from 'path';
 
 // For static code generation
-import {TopicServiceImpl} from './topic/topicServiceImpl';
+import { TopicServiceImpl } from './topic/topicServiceImpl';
 // For dynamic code generation
 import * as topicServiceImpl from './topic/topicServiceImplDynamic';
 import * as userServiceImpl from './user/userServiceImpl';
@@ -16,9 +16,9 @@ const packageDefinition: PackageDefinition = protoLoader.loadSync(PROTO_PATH, {
   enums: String,
   defaults: true,
   oneofs: true,
-  includeDirs: [__dirname]
+  includeDirs: [__dirname],
 });
 const grpcObject: GrpcObject = grpc.loadPackageDefinition(packageDefinition);
-const {topic, user} = grpcObject;
+const { topic, user } = grpcObject;
 
-export {topic, user, topicServiceImpl, TopicServiceImpl, userServiceImpl};
+export { topic, user, topicServiceImpl, TopicServiceImpl, userServiceImpl };

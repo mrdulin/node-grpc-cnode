@@ -1,6 +1,7 @@
 import grpc from 'grpc';
 import { config } from './config';
-import { topic, topicServiceImpl, TopicServiceImpl, user, userServiceImpl } from './protos';
+// import { topic, topicServiceImpl, TopicServiceImpl, user, userServiceImpl } from './protos';
+import { TopicServiceImpl } from './protos/topic/topicServiceImpl';
 import { ITopicServiceServer, TopicServiceService } from './protos/topic/service_grpc_pb';
 
 function createServer() {
