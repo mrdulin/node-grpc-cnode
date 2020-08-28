@@ -17,8 +17,8 @@ export class GetTopicsRequest extends jspb.Message {
     getLimit(): number;
     setLimit(value: number): GetTopicsRequest;
 
-    getMdrender(): string;
-    setMdrender(value: string): GetTopicsRequest;
+    getMdrender(): topic_topic_pb.Mdrender;
+    setMdrender(value: topic_topic_pb.Mdrender): GetTopicsRequest;
 
 
     serializeBinary(): Uint8Array;
@@ -36,7 +36,7 @@ export namespace GetTopicsRequest {
         page: number,
         tab: topic_topic_pb.Tab,
         limit: number,
-        mdrender: string,
+        mdrender: topic_topic_pb.Mdrender,
     }
 }
 

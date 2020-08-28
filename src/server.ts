@@ -5,9 +5,11 @@ import { ITopicServiceServer, TopicServiceService } from './protos/topic/service
 
 function createServer() {
   const server = new grpc.Server();
-  server.addService((topic as any).TopicService.service, topicServiceImpl);
-  // server.addService<ITopicServiceServer>(TopicServiceService, new TopicServiceImpl());
-  server.addService((user as any).UserService.service, userServiceImpl);
+  // dynamic
+  // server.addService((topic as any).TopicService.service, topicServiceImpl);
+  // server.addService((user as any).UserService.service, userServiceImpl);
+  // static
+  server.addService<ITopicServiceServer>(TopicServiceService, new TopicServiceImpl());
   server.bind(`${config.HOST}:${config.PORT}`, grpc.ServerCredentials.createInsecure());
   server.start();
   console.log(`Server is listening on http://${config.HOST}:${config.PORT}`);

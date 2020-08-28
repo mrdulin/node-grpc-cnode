@@ -81,3 +81,8 @@ export enum Tab {
     GOOD = 2,
     JOB = 3,
 }
+
+export enum Mdrender {
+    TRUE = 0,
+    FALSE = 1,
+}

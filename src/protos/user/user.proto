@@ -17,6 +17,6 @@ message UserDetail {
   string githubUsername = 3;
   string create_at = 4;
   int32 score = 5;
-  // repeated share.TopicBase recent_topics = 6;
-  // repeated reply.RecentReply recent_replies = 7;
+  repeated share.TopicBase recent_topics = 6;
+  repeated reply.RecentReply recent_replies = 7;
 }

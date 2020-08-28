@@ -1,9 +1,12 @@
 import { createServer } from '../../server';
 import { createTopicServiceClient, ClientType } from '../../utils/test';
+import { GetTopicsRequest, GetTopicsResponse } from './service_pb';
+import { ITopicServiceClient } from './service_grpc_pb';
+import { ServiceError } from 'grpc';
 
 describe('userServiceImpl', () => {
   let server: ReturnType<typeof createServer>;
-  let topicServiceClient: ReturnType<typeof createTopicServiceClient>;
+  let topicServiceClient: ITopicServiceClient;
   beforeAll(() => {
     server = createServer();
     topicServiceClient = createTopicServiceClient(ClientType.STATIC);
@@ -13,32 +16,36 @@ describe('userServiceImpl', () => {
   });
   describe('#getTopics', () => {
     it('should get topics', (done) => {
-      topicServiceClient.getTopics({ limit: 1 }, (err, response) => {
+      const req = new GetTopicsRequest();
+      req.setLimit(1);
+      topicServiceClient.getTopics(req, (err: ServiceError | null, response: GetTopicsResponse) => {
         if (err) {
           return done(err);
         }
-        expect(response.data).toHaveLength(1);
-        expect(response).toEqual(
-          expect.objectContaining({
-            data: expect.arrayContaining([
-              expect.objectContaining({
-                id: expect.any(String),
-                author_id: expect.any(String),
-                tab: expect.any(String),
-                title: expect.any(String),
-                content: expect.any(String),
-                author: expect.any(Object),
-                good: expect.any(Boolean),
-                top: expect.any(Boolean),
-                reply_count: expect.any(Number),
-                visit_count: expect.any(Number),
-                create_at: expect.any(String),
-                last_reply_at: expect.any(String),
+        expect(response.getSuccess()).toBeTruthy();
+        expect(response.getDataList()).toHaveLength(1);
+        expect(response.toObject().dataList).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              id: expect.any(String),
+              authorId: expect.any(String),
+              tab: expect.any(Number),
+              title: expect.any(String),
+              content: expect.any(String),
+              author: expect.objectContaining({
+                loginname: expect.any(String),
+                avatarUrl: expect.any(String),
               }),
-            ]),
-            success: true,
-          }),
+              good: expect.any(Boolean),
+              top: expect.any(Boolean),
+              replyCount: expect.any(Number),
+              visitCount: expect.any(Number),
+              createAt: expect.any(String),
+              lastReplyAt: expect.any(String),
+            }),
+          ]),
         );
+
         done();
       });
     });

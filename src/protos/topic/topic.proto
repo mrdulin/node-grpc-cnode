@@ -11,13 +11,18 @@ enum Tab {
   job = 3;
 }
 
+enum Mdrender {
+  true = 0;
+  false = 1;
+}
+
 message Topic {
   string id = 1;
   string author_id = 2;
   Tab tab = 3;
   string title = 4;
   string content = 5;
-  // share.UserBase author = 6;
+  share.UserBase author = 6;
   bool good = 7;
   bool top = 8;
   int32 reply_count = 9;
