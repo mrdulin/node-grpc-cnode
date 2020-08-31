@@ -1,8 +1,12 @@
 import grpc from 'grpc';
 import { config } from './config';
-// import { topic, topicServiceImpl, TopicServiceImpl, user, userServiceImpl } from './protos';
+// dynamic codegen
+// import { topic, topicServiceImpl, user, userServiceImpl } from './protos';
+// static codegen
 import { TopicServiceImpl } from './protos/topic/topicServiceImpl';
+import { UserServiceImpl } from './protos/user/userServiceImpl';
 import { ITopicServiceServer, TopicServiceService } from './protos/topic/service_grpc_pb';
+import { IUserServiceServer, UserServiceService } from './protos/user/service_grpc_pb';
 
 function createServer() {
   const server = new grpc.Server();
@@ -11,6 +15,8 @@ function createServer() {
   // server.addService((user as any).UserService.service, userServiceImpl);
   // static
   server.addService<ITopicServiceServer>(TopicServiceService, new TopicServiceImpl());
+  server.addService<IUserServiceServer>(UserServiceService, new UserServiceImpl());
+
   server.bind(`${config.HOST}:${config.PORT}`, grpc.ServerCredentials.createInsecure());
   server.start();
   console.log(`Server is listening on http://${config.HOST}:${config.PORT}`);

@@ -2,6 +2,7 @@ import grpc from 'grpc';
 import { topic, user } from '../protos';
 import { config } from '../config';
 import { TopicServiceClient } from '../protos/topic/service_grpc_pb';
+import { UserServiceClient } from '../protos/user/service_grpc_pb';
 
 export enum ClientType {
   STATIC = 'static',
@@ -22,4 +23,5 @@ export function createUserServiceClient(type: ClientType) {
   if (type === ClientType.DYNAMIC) {
     return new (user as any).UserService(address, channelCredentials);
   }
+  return new UserServiceClient(address, channelCredentials);
 }
