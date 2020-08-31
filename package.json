@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-grpc",
+  "name": "node-grpc-cnode",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Node gRPC server for CNode community built on the top of RESTful API.",
   "main": "./dist/server.js",
   "scripts": {
     "test:unit": "jest -c jest.config.js",
@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrdulin/nodejs-grpc.git"
+    "url": "git+https://github.com/mrdulin/node-grpc-cnode.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mrdulin/nodejs-grpc/issues"
+    "url": "https://github.com/mrdulin/node-grpc-cnode/issues"
   },
-  "homepage": "https://github.com/mrdulin/nodejs-grpc#readme",
+  "homepage": "https://github.com/mrdulin/node-grpc-cnode#readme",
   "dependencies": {
     "@grpc/proto-loader": "^0.5.5",
     "axios": "^0.20.0",
