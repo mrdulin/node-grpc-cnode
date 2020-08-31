@@ -4,26 +4,26 @@ package topic;
 
 import "topic/topic.proto";
 
-service TopicService {
-  rpc GetTopics(GetTopicsRequest) returns (GetTopicsResponse);
-  rpc GetTopicById(GetTopicByIdRequest) returns (GetTopicByIdResponse);
+service TopicApi {
+  rpc ListTopics(ListTopicsRequest) returns (ListTopicsResponse);
+  rpc GetTopic(GetTopicRequest) returns (GetTopicResponse);
 }
 
-message GetTopicsRequest {
+message ListTopicsRequest {
   int32 page = 1;
   topic.Tab tab = 2;
   int32 limit = 3;
   topic.Mdrender mdrender = 4;
 }
 
-message GetTopicsResponse {
+message ListTopicsResponse {
   repeated topic.Topic data = 1;
   bool success = 2;
 }
 
-message GetTopicByIdRequest { string id = 1; }
+message GetTopicRequest { string id = 1; }
 
-message GetTopicByIdResponse {
+message GetTopicResponse {
   topic.Topic data = 1;
   bool success = 2;
 }

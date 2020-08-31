@@ -5,26 +5,26 @@ var grpc = require('grpc');
 var user_service_pb = require('../user/service_pb.js');
 var user_user_pb = require('../user/user_pb.js');
 
-function serialize_user_GetUserByLoginnameRequest(arg) {
-  if (!(arg instanceof user_service_pb.GetUserByLoginnameRequest)) {
-    throw new Error('Expected argument of type user.GetUserByLoginnameRequest');
+function serialize_user_GetUserRequest(arg) {
+  if (!(arg instanceof user_service_pb.GetUserRequest)) {
+    throw new Error('Expected argument of type user.GetUserRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_user_GetUserByLoginnameRequest(buffer_arg) {
-  return user_service_pb.GetUserByLoginnameRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_user_GetUserRequest(buffer_arg) {
+  return user_service_pb.GetUserRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_user_GetUserByLoginnameResponse(arg) {
-  if (!(arg instanceof user_service_pb.GetUserByLoginnameResponse)) {
-    throw new Error('Expected argument of type user.GetUserByLoginnameResponse');
+function serialize_user_GetUserResponse(arg) {
+  if (!(arg instanceof user_service_pb.GetUserResponse)) {
+    throw new Error('Expected argument of type user.GetUserResponse');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_user_GetUserByLoginnameResponse(buffer_arg) {
-  return user_service_pb.GetUserByLoginnameResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_user_GetUserResponse(buffer_arg) {
+  return user_service_pb.GetUserResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_user_ValidateAccessTokenRequest(arg) {
@@ -50,20 +50,20 @@ function deserialize_user_ValidateAccessTokenResponse(buffer_arg) {
 }
 
 
-var UserServiceService = exports.UserServiceService = {
-  getUserByLoginname: {
-    path: '/user.UserService/GetUserByLoginname',
+var UserApiService = exports.UserApiService = {
+  getUser: {
+    path: '/user.UserApi/GetUser',
     requestStream: false,
     responseStream: false,
-    requestType: user_service_pb.GetUserByLoginnameRequest,
-    responseType: user_service_pb.GetUserByLoginnameResponse,
-    requestSerialize: serialize_user_GetUserByLoginnameRequest,
-    requestDeserialize: deserialize_user_GetUserByLoginnameRequest,
-    responseSerialize: serialize_user_GetUserByLoginnameResponse,
-    responseDeserialize: deserialize_user_GetUserByLoginnameResponse,
+    requestType: user_service_pb.GetUserRequest,
+    responseType: user_service_pb.GetUserResponse,
+    requestSerialize: serialize_user_GetUserRequest,
+    requestDeserialize: deserialize_user_GetUserRequest,
+    responseSerialize: serialize_user_GetUserResponse,
+    responseDeserialize: deserialize_user_GetUserResponse,
   },
   validateAccessToken: {
-    path: '/user.UserService/ValidateAccessToken',
+    path: '/user.UserApi/ValidateAccessToken',
     requestStream: false,
     responseStream: false,
     requestType: user_service_pb.ValidateAccessTokenRequest,
@@ -75,4 +75,4 @@ var UserServiceService = exports.UserServiceService = {
   },
 };
 
-exports.UserServiceClient = grpc.makeGenericClientConstructor(UserServiceService);
+exports.UserApiClient = grpc.makeGenericClientConstructor(UserApiService);

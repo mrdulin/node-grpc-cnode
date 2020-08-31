@@ -1,24 +1,19 @@
-import { createServer } from '../../server';
-import { ClientType, createUserServiceClient } from '../../utils/test';
+import { ClientType, createUserServiceClient } from '../../utils/testUtil';
 import { ServiceError } from 'grpc';
-import { GetUserByLoginnameResponse, GetUserByLoginnameRequest } from './service_pb';
+import { GetUserRequest, GetUserResponse } from './service_pb';
+import { IUserApiClient } from './service_grpc_pb';
 
 describe('#userServiceImpl', () => {
-  let server: ReturnType<typeof createServer>;
-  let userServiceClient: ReturnType<typeof createUserServiceClient>;
+  let userServiceClient: IUserApiClient;
   beforeAll(() => {
-    server = createServer();
     userServiceClient = createUserServiceClient(ClientType.STATIC);
-  });
-  afterAll((done) => {
-    server.tryShutdown(done);
   });
   describe('#getUserByLoginname', () => {
     it('should get user detail by login name', (done) => {
-      const req = new GetUserByLoginnameRequest();
+      const req = new GetUserRequest();
       req.setLoginname('mrdulin');
 
-      userServiceClient.getUserByLoginname(req, (err: ServiceError | null, res: GetUserByLoginnameResponse) => {
+      userServiceClient.getUser(req, (err: ServiceError | null, res: GetUserResponse) => {
         if (err) {
           return done(err);
         }

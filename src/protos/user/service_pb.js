@@ -12,8 +12,8 @@ var goog = jspb;
 var global = Function('return this')();
 
 var user_user_pb = require('../user/user_pb.js');
-goog.exportSymbol('proto.user.GetUserByLoginnameRequest', null, global);
-goog.exportSymbol('proto.user.GetUserByLoginnameResponse', null, global);
+goog.exportSymbol('proto.user.GetUserRequest', null, global);
+goog.exportSymbol('proto.user.GetUserResponse', null, global);
 goog.exportSymbol('proto.user.ValidateAccessTokenRequest', null, global);
 goog.exportSymbol('proto.user.ValidateAccessTokenResponse', null, global);
 
@@ -27,12 +27,12 @@ goog.exportSymbol('proto.user.ValidateAccessTokenResponse', null, global);
  * @extends {jspb.Message}
  * @constructor
  */
-proto.user.GetUserByLoginnameRequest = function(opt_data) {
+proto.user.GetUserRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.user.GetUserByLoginnameRequest, jspb.Message);
+goog.inherits(proto.user.GetUserRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.user.GetUserByLoginnameRequest.displayName = 'proto.user.GetUserByLoginnameRequest';
+  proto.user.GetUserRequest.displayName = 'proto.user.GetUserRequest';
 }
 
 
@@ -47,8 +47,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.user.GetUserByLoginnameRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.user.GetUserByLoginnameRequest.toObject(opt_includeInstance, this);
+proto.user.GetUserRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.user.GetUserRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -57,11 +57,11 @@ proto.user.GetUserByLoginnameRequest.prototype.toObject = function(opt_includeIn
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.user.GetUserByLoginnameRequest} msg The msg instance to transform.
+ * @param {!proto.user.GetUserRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.user.GetUserByLoginnameRequest.toObject = function(includeInstance, msg) {
+proto.user.GetUserRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     loginname: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
@@ -77,23 +77,23 @@ proto.user.GetUserByLoginnameRequest.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.user.GetUserByLoginnameRequest}
+ * @return {!proto.user.GetUserRequest}
  */
-proto.user.GetUserByLoginnameRequest.deserializeBinary = function(bytes) {
+proto.user.GetUserRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.user.GetUserByLoginnameRequest;
-  return proto.user.GetUserByLoginnameRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.user.GetUserRequest;
+  return proto.user.GetUserRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.user.GetUserByLoginnameRequest} msg The message object to deserialize into.
+ * @param {!proto.user.GetUserRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.user.GetUserByLoginnameRequest}
+ * @return {!proto.user.GetUserRequest}
  */
-proto.user.GetUserByLoginnameRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.user.GetUserRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -117,9 +117,9 @@ proto.user.GetUserByLoginnameRequest.deserializeBinaryFromReader = function(msg,
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.user.GetUserByLoginnameRequest.prototype.serializeBinary = function() {
+proto.user.GetUserRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.user.GetUserByLoginnameRequest.serializeBinaryToWriter(this, writer);
+  proto.user.GetUserRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -127,11 +127,11 @@ proto.user.GetUserByLoginnameRequest.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.user.GetUserByLoginnameRequest} message
+ * @param {!proto.user.GetUserRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.user.GetUserByLoginnameRequest.serializeBinaryToWriter = function(message, writer) {
+proto.user.GetUserRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getLoginname();
   if (f.length > 0) {
@@ -147,13 +147,13 @@ proto.user.GetUserByLoginnameRequest.serializeBinaryToWriter = function(message,
  * optional string loginname = 1;
  * @return {string}
  */
-proto.user.GetUserByLoginnameRequest.prototype.getLoginname = function() {
+proto.user.GetUserRequest.prototype.getLoginname = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
-proto.user.GetUserByLoginnameRequest.prototype.setLoginname = function(value) {
+proto.user.GetUserRequest.prototype.setLoginname = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
@@ -169,12 +169,12 @@ proto.user.GetUserByLoginnameRequest.prototype.setLoginname = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.user.GetUserByLoginnameResponse = function(opt_data) {
+proto.user.GetUserResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.user.GetUserByLoginnameResponse, jspb.Message);
+goog.inherits(proto.user.GetUserResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.user.GetUserByLoginnameResponse.displayName = 'proto.user.GetUserByLoginnameResponse';
+  proto.user.GetUserResponse.displayName = 'proto.user.GetUserResponse';
 }
 
 
@@ -189,8 +189,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.user.GetUserByLoginnameResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.user.GetUserByLoginnameResponse.toObject(opt_includeInstance, this);
+proto.user.GetUserResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.user.GetUserResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -199,11 +199,11 @@ proto.user.GetUserByLoginnameResponse.prototype.toObject = function(opt_includeI
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.user.GetUserByLoginnameResponse} msg The msg instance to transform.
+ * @param {!proto.user.GetUserResponse} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.user.GetUserByLoginnameResponse.toObject = function(includeInstance, msg) {
+proto.user.GetUserResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     data: (f = msg.getData()) && user_user_pb.UserDetail.toObject(includeInstance, f),
     success: jspb.Message.getFieldWithDefault(msg, 2, false)
@@ -220,23 +220,23 @@ proto.user.GetUserByLoginnameResponse.toObject = function(includeInstance, msg) 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.user.GetUserByLoginnameResponse}
+ * @return {!proto.user.GetUserResponse}
  */
-proto.user.GetUserByLoginnameResponse.deserializeBinary = function(bytes) {
+proto.user.GetUserResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.user.GetUserByLoginnameResponse;
-  return proto.user.GetUserByLoginnameResponse.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.user.GetUserResponse;
+  return proto.user.GetUserResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.user.GetUserByLoginnameResponse} msg The message object to deserialize into.
+ * @param {!proto.user.GetUserResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.user.GetUserByLoginnameResponse}
+ * @return {!proto.user.GetUserResponse}
  */
-proto.user.GetUserByLoginnameResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.user.GetUserResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -265,9 +265,9 @@ proto.user.GetUserByLoginnameResponse.deserializeBinaryFromReader = function(msg
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.user.GetUserByLoginnameResponse.prototype.serializeBinary = function() {
+proto.user.GetUserResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.user.GetUserByLoginnameResponse.serializeBinaryToWriter(this, writer);
+  proto.user.GetUserResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -275,11 +275,11 @@ proto.user.GetUserByLoginnameResponse.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.user.GetUserByLoginnameResponse} message
+ * @param {!proto.user.GetUserResponse} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.user.GetUserByLoginnameResponse.serializeBinaryToWriter = function(message, writer) {
+proto.user.GetUserResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getData();
   if (f != null) {
@@ -303,19 +303,19 @@ proto.user.GetUserByLoginnameResponse.serializeBinaryToWriter = function(message
  * optional UserDetail data = 1;
  * @return {?proto.user.UserDetail}
  */
-proto.user.GetUserByLoginnameResponse.prototype.getData = function() {
+proto.user.GetUserResponse.prototype.getData = function() {
   return /** @type{?proto.user.UserDetail} */ (
     jspb.Message.getWrapperField(this, user_user_pb.UserDetail, 1));
 };
 
 
 /** @param {?proto.user.UserDetail|undefined} value */
-proto.user.GetUserByLoginnameResponse.prototype.setData = function(value) {
+proto.user.GetUserResponse.prototype.setData = function(value) {
   jspb.Message.setWrapperField(this, 1, value);
 };
 
 
-proto.user.GetUserByLoginnameResponse.prototype.clearData = function() {
+proto.user.GetUserResponse.prototype.clearData = function() {
   this.setData(undefined);
 };
 
@@ -324,7 +324,7 @@ proto.user.GetUserByLoginnameResponse.prototype.clearData = function() {
  * Returns whether this field is set.
  * @return {!boolean}
  */
-proto.user.GetUserByLoginnameResponse.prototype.hasData = function() {
+proto.user.GetUserResponse.prototype.hasData = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -335,13 +335,13 @@ proto.user.GetUserByLoginnameResponse.prototype.hasData = function() {
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-proto.user.GetUserByLoginnameResponse.prototype.getSuccess = function() {
+proto.user.GetUserResponse.prototype.getSuccess = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 2, false));
 };
 
 
 /** @param {boolean} value */
-proto.user.GetUserByLoginnameResponse.prototype.setSuccess = function(value) {
+proto.user.GetUserResponse.prototype.setSuccess = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 

@@ -7,31 +7,31 @@
 import * as jspb from "google-protobuf";
 import * as topic_topic_pb from "../topic/topic_pb";
 
-export class GetTopicsRequest extends jspb.Message { 
+export class ListTopicsRequest extends jspb.Message { 
     getPage(): number;
-    setPage(value: number): GetTopicsRequest;
+    setPage(value: number): ListTopicsRequest;
 
     getTab(): topic_topic_pb.Tab;
-    setTab(value: topic_topic_pb.Tab): GetTopicsRequest;
+    setTab(value: topic_topic_pb.Tab): ListTopicsRequest;
 
     getLimit(): number;
-    setLimit(value: number): GetTopicsRequest;
+    setLimit(value: number): ListTopicsRequest;
 
     getMdrender(): topic_topic_pb.Mdrender;
-    setMdrender(value: topic_topic_pb.Mdrender): GetTopicsRequest;
+    setMdrender(value: topic_topic_pb.Mdrender): ListTopicsRequest;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetTopicsRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: GetTopicsRequest): GetTopicsRequest.AsObject;
+    toObject(includeInstance?: boolean): ListTopicsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListTopicsRequest): ListTopicsRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetTopicsRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetTopicsRequest;
-    static deserializeBinaryFromReader(message: GetTopicsRequest, reader: jspb.BinaryReader): GetTopicsRequest;
+    static serializeBinaryToWriter(message: ListTopicsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListTopicsRequest;
+    static deserializeBinaryFromReader(message: ListTopicsRequest, reader: jspb.BinaryReader): ListTopicsRequest;
 }
 
-export namespace GetTopicsRequest {
+export namespace ListTopicsRequest {
     export type AsObject = {
         page: number,
         tab: topic_topic_pb.Tab,
@@ -40,76 +40,76 @@ export namespace GetTopicsRequest {
     }
 }
 
-export class GetTopicsResponse extends jspb.Message { 
+export class ListTopicsResponse extends jspb.Message { 
     clearDataList(): void;
     getDataList(): Array<topic_topic_pb.Topic>;
-    setDataList(value: Array<topic_topic_pb.Topic>): GetTopicsResponse;
+    setDataList(value: Array<topic_topic_pb.Topic>): ListTopicsResponse;
     addData(value?: topic_topic_pb.Topic, index?: number): topic_topic_pb.Topic;
 
     getSuccess(): boolean;
-    setSuccess(value: boolean): GetTopicsResponse;
+    setSuccess(value: boolean): ListTopicsResponse;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetTopicsResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: GetTopicsResponse): GetTopicsResponse.AsObject;
+    toObject(includeInstance?: boolean): ListTopicsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListTopicsResponse): ListTopicsResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetTopicsResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetTopicsResponse;
-    static deserializeBinaryFromReader(message: GetTopicsResponse, reader: jspb.BinaryReader): GetTopicsResponse;
+    static serializeBinaryToWriter(message: ListTopicsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListTopicsResponse;
+    static deserializeBinaryFromReader(message: ListTopicsResponse, reader: jspb.BinaryReader): ListTopicsResponse;
 }
 
-export namespace GetTopicsResponse {
+export namespace ListTopicsResponse {
     export type AsObject = {
         dataList: Array<topic_topic_pb.Topic.AsObject>,
         success: boolean,
     }
 }
 
-export class GetTopicByIdRequest extends jspb.Message { 
+export class GetTopicRequest extends jspb.Message { 
     getId(): string;
-    setId(value: string): GetTopicByIdRequest;
+    setId(value: string): GetTopicRequest;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetTopicByIdRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: GetTopicByIdRequest): GetTopicByIdRequest.AsObject;
+    toObject(includeInstance?: boolean): GetTopicRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetTopicRequest): GetTopicRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetTopicByIdRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetTopicByIdRequest;
-    static deserializeBinaryFromReader(message: GetTopicByIdRequest, reader: jspb.BinaryReader): GetTopicByIdRequest;
+    static serializeBinaryToWriter(message: GetTopicRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetTopicRequest;
+    static deserializeBinaryFromReader(message: GetTopicRequest, reader: jspb.BinaryReader): GetTopicRequest;
 }
 
-export namespace GetTopicByIdRequest {
+export namespace GetTopicRequest {
     export type AsObject = {
         id: string,
     }
 }
 
-export class GetTopicByIdResponse extends jspb.Message { 
+export class GetTopicResponse extends jspb.Message { 
 
     hasData(): boolean;
     clearData(): void;
     getData(): topic_topic_pb.Topic | undefined;
-    setData(value?: topic_topic_pb.Topic): GetTopicByIdResponse;
+    setData(value?: topic_topic_pb.Topic): GetTopicResponse;
 
     getSuccess(): boolean;
-    setSuccess(value: boolean): GetTopicByIdResponse;
+    setSuccess(value: boolean): GetTopicResponse;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetTopicByIdResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: GetTopicByIdResponse): GetTopicByIdResponse.AsObject;
+    toObject(includeInstance?: boolean): GetTopicResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GetTopicResponse): GetTopicResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetTopicByIdResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetTopicByIdResponse;
-    static deserializeBinaryFromReader(message: GetTopicByIdResponse, reader: jspb.BinaryReader): GetTopicByIdResponse;
+    static serializeBinaryToWriter(message: GetTopicResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetTopicResponse;
+    static deserializeBinaryFromReader(message: GetTopicResponse, reader: jspb.BinaryReader): GetTopicResponse;
 }
 
-export namespace GetTopicByIdResponse {
+export namespace GetTopicResponse {
     export type AsObject = {
         data?: topic_topic_pb.Topic.AsObject,
         success: boolean,

@@ -1,24 +1,18 @@
-import { createServer } from '../../server';
-import { createTopicServiceClient, ClientType } from '../../utils/test';
-import { GetTopicsRequest, GetTopicsResponse, GetTopicByIdResponse, GetTopicByIdRequest } from './service_pb';
-import { ITopicServiceClient } from './service_grpc_pb';
+import { createTopicServiceClient, ClientType } from '../../utils/testUtil';
+import { ListTopicsRequest, ListTopicsResponse, GetTopicRequest, GetTopicResponse } from './service_pb';
+import { ITopicApiClient } from './service_grpc_pb';
 import { ServiceError } from 'grpc';
 
 describe('userServiceImpl', () => {
-  let server: ReturnType<typeof createServer>;
-  let topicServiceClient: ITopicServiceClient;
+  let topicServiceClient: ITopicApiClient;
   beforeAll(() => {
-    server = createServer();
     topicServiceClient = createTopicServiceClient(ClientType.STATIC);
-  });
-  afterAll((done) => {
-    server.tryShutdown(done);
   });
   describe('#getTopics', () => {
     it('should get topics', (done) => {
-      const req = new GetTopicsRequest();
+      const req = new ListTopicsRequest();
       req.setLimit(1);
-      topicServiceClient.getTopics(req, (err: ServiceError | null, response: GetTopicsResponse) => {
+      topicServiceClient.listTopics(req, (err: ServiceError | null, response: ListTopicsResponse) => {
         if (err) {
           return done(err);
         }
@@ -53,9 +47,9 @@ describe('userServiceImpl', () => {
 
   describe('#getTopicById', () => {
     it('should get topic by id', (done) => {
-      const req = new GetTopicByIdRequest();
+      const req = new GetTopicRequest();
       req.setId('5433d5e4e737cbe96dcef312');
-      topicServiceClient.getTopicById(req, (err: ServiceError | null, res: GetTopicByIdResponse) => {
+      topicServiceClient.getTopic(req, (err: ServiceError | null, res: GetTopicResponse) => {
         if (err) {
           return done(err);
         }

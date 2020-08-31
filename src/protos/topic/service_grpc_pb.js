@@ -5,74 +5,74 @@ var grpc = require('grpc');
 var topic_service_pb = require('../topic/service_pb.js');
 var topic_topic_pb = require('../topic/topic_pb.js');
 
-function serialize_topic_GetTopicByIdRequest(arg) {
-  if (!(arg instanceof topic_service_pb.GetTopicByIdRequest)) {
-    throw new Error('Expected argument of type topic.GetTopicByIdRequest');
+function serialize_topic_GetTopicRequest(arg) {
+  if (!(arg instanceof topic_service_pb.GetTopicRequest)) {
+    throw new Error('Expected argument of type topic.GetTopicRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_topic_GetTopicByIdRequest(buffer_arg) {
-  return topic_service_pb.GetTopicByIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_topic_GetTopicRequest(buffer_arg) {
+  return topic_service_pb.GetTopicRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_topic_GetTopicByIdResponse(arg) {
-  if (!(arg instanceof topic_service_pb.GetTopicByIdResponse)) {
-    throw new Error('Expected argument of type topic.GetTopicByIdResponse');
+function serialize_topic_GetTopicResponse(arg) {
+  if (!(arg instanceof topic_service_pb.GetTopicResponse)) {
+    throw new Error('Expected argument of type topic.GetTopicResponse');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_topic_GetTopicByIdResponse(buffer_arg) {
-  return topic_service_pb.GetTopicByIdResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_topic_GetTopicResponse(buffer_arg) {
+  return topic_service_pb.GetTopicResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_topic_GetTopicsRequest(arg) {
-  if (!(arg instanceof topic_service_pb.GetTopicsRequest)) {
-    throw new Error('Expected argument of type topic.GetTopicsRequest');
+function serialize_topic_ListTopicsRequest(arg) {
+  if (!(arg instanceof topic_service_pb.ListTopicsRequest)) {
+    throw new Error('Expected argument of type topic.ListTopicsRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_topic_GetTopicsRequest(buffer_arg) {
-  return topic_service_pb.GetTopicsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_topic_ListTopicsRequest(buffer_arg) {
+  return topic_service_pb.ListTopicsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_topic_GetTopicsResponse(arg) {
-  if (!(arg instanceof topic_service_pb.GetTopicsResponse)) {
-    throw new Error('Expected argument of type topic.GetTopicsResponse');
+function serialize_topic_ListTopicsResponse(arg) {
+  if (!(arg instanceof topic_service_pb.ListTopicsResponse)) {
+    throw new Error('Expected argument of type topic.ListTopicsResponse');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_topic_GetTopicsResponse(buffer_arg) {
-  return topic_service_pb.GetTopicsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_topic_ListTopicsResponse(buffer_arg) {
+  return topic_service_pb.ListTopicsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
-var TopicServiceService = exports.TopicServiceService = {
-  getTopics: {
-    path: '/topic.TopicService/GetTopics',
+var TopicApiService = exports.TopicApiService = {
+  listTopics: {
+    path: '/topic.TopicApi/ListTopics',
     requestStream: false,
     responseStream: false,
-    requestType: topic_service_pb.GetTopicsRequest,
-    responseType: topic_service_pb.GetTopicsResponse,
-    requestSerialize: serialize_topic_GetTopicsRequest,
-    requestDeserialize: deserialize_topic_GetTopicsRequest,
-    responseSerialize: serialize_topic_GetTopicsResponse,
-    responseDeserialize: deserialize_topic_GetTopicsResponse,
+    requestType: topic_service_pb.ListTopicsRequest,
+    responseType: topic_service_pb.ListTopicsResponse,
+    requestSerialize: serialize_topic_ListTopicsRequest,
+    requestDeserialize: deserialize_topic_ListTopicsRequest,
+    responseSerialize: serialize_topic_ListTopicsResponse,
+    responseDeserialize: deserialize_topic_ListTopicsResponse,
   },
-  getTopicById: {
-    path: '/topic.TopicService/GetTopicById',
+  getTopic: {
+    path: '/topic.TopicApi/GetTopic',
     requestStream: false,
     responseStream: false,
-    requestType: topic_service_pb.GetTopicByIdRequest,
-    responseType: topic_service_pb.GetTopicByIdResponse,
-    requestSerialize: serialize_topic_GetTopicByIdRequest,
-    requestDeserialize: deserialize_topic_GetTopicByIdRequest,
-    responseSerialize: serialize_topic_GetTopicByIdResponse,
-    responseDeserialize: deserialize_topic_GetTopicByIdResponse,
+    requestType: topic_service_pb.GetTopicRequest,
+    responseType: topic_service_pb.GetTopicResponse,
+    requestSerialize: serialize_topic_GetTopicRequest,
+    requestDeserialize: deserialize_topic_GetTopicRequest,
+    responseSerialize: serialize_topic_GetTopicResponse,
+    responseDeserialize: deserialize_topic_GetTopicResponse,
   },
 };
 
-exports.TopicServiceClient = grpc.makeGenericClientConstructor(TopicServiceService);
+exports.TopicApiClient = grpc.makeGenericClientConstructor(TopicApiService);

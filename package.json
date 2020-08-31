@@ -4,7 +4,8 @@
   "description": "",
   "main": "./dist/server.js",
   "scripts": {
-    "test": "jest",
+    "test:unit": "jest -c jest.config.js",
+    "test:int": "jest -c jest.config.integration.js",
     "protoc": "./scripts/protoc.sh",
     "clean": "rimraf -rf ./dist",
     "prebuild": "npm run clean",

@@ -5,12 +5,12 @@ import { config } from '../../config';
 import { getEnumKeyByEnumValue } from '../../utils/enum';
 import { UserBase } from '../share/user_pb';
 
-import { ITopicServiceServer } from './service_grpc_pb';
-import { GetTopicByIdRequest, GetTopicByIdResponse, GetTopicsRequest, GetTopicsResponse } from './service_pb';
+import { ITopicApiServer } from './service_grpc_pb';
+import { GetTopicRequest, GetTopicResponse, ListTopicsRequest, ListTopicsResponse } from './service_pb';
 import { Mdrender, Tab, Topic } from './topic_pb';
 
-export class TopicServiceImpl implements ITopicServiceServer {
-  public async getTopics(call: ServerUnaryCall<GetTopicsRequest>, callback: sendUnaryData<GetTopicsResponse>) {
+export class TopicServiceImpl implements ITopicApiServer {
+  public async listTopics(call: ServerUnaryCall<ListTopicsRequest>, callback: sendUnaryData<ListTopicsResponse>) {
     const obj = call.request.toObject();
     const url = `${config.CNODE_API_URL}/topics`;
     const params = {
@@ -23,7 +23,7 @@ export class TopicServiceImpl implements ITopicServiceServer {
       const res = await axios.get(url, { params });
       const data = res.data;
       // console.log(data);
-      const topicsResponse = new GetTopicsResponse();
+      const topicsResponse = new ListTopicsResponse();
       data.data.forEach((po, i) => {
         const topic = new Topic();
         topic.setId(po.id);
@@ -59,13 +59,13 @@ export class TopicServiceImpl implements ITopicServiceServer {
       callback(ErrGetTopics, null);
     }
   }
-  public async getTopicById(call: ServerUnaryCall<GetTopicByIdRequest>, callback: sendUnaryData<GetTopicByIdResponse>) {
+  public async getTopic(call: ServerUnaryCall<GetTopicRequest>, callback: sendUnaryData<GetTopicResponse>) {
     const id = call.request.getId();
     const url = `${config.CNODE_API_URL}/topic/${id}`;
     try {
       const res = await axios.get(url);
       const data = res.data.data;
-      const topicByIdResponse = new GetTopicByIdResponse();
+      const topicByIdResponse = new GetTopicResponse();
       topicByIdResponse.setSuccess(res.data.success);
       const topic = new Topic();
       topic.setId(data.id);

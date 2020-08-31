@@ -7,49 +7,49 @@
 import * as jspb from "google-protobuf";
 import * as user_user_pb from "../user/user_pb";
 
-export class GetUserByLoginnameRequest extends jspb.Message { 
+export class GetUserRequest extends jspb.Message { 
     getLoginname(): string;
-    setLoginname(value: string): GetUserByLoginnameRequest;
+    setLoginname(value: string): GetUserRequest;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetUserByLoginnameRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: GetUserByLoginnameRequest): GetUserByLoginnameRequest.AsObject;
+    toObject(includeInstance?: boolean): GetUserRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetUserRequest): GetUserRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetUserByLoginnameRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetUserByLoginnameRequest;
-    static deserializeBinaryFromReader(message: GetUserByLoginnameRequest, reader: jspb.BinaryReader): GetUserByLoginnameRequest;
+    static serializeBinaryToWriter(message: GetUserRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetUserRequest;
+    static deserializeBinaryFromReader(message: GetUserRequest, reader: jspb.BinaryReader): GetUserRequest;
 }
 
-export namespace GetUserByLoginnameRequest {
+export namespace GetUserRequest {
     export type AsObject = {
         loginname: string,
     }
 }
 
-export class GetUserByLoginnameResponse extends jspb.Message { 
+export class GetUserResponse extends jspb.Message { 
 
     hasData(): boolean;
     clearData(): void;
     getData(): user_user_pb.UserDetail | undefined;
-    setData(value?: user_user_pb.UserDetail): GetUserByLoginnameResponse;
+    setData(value?: user_user_pb.UserDetail): GetUserResponse;
 
     getSuccess(): boolean;
-    setSuccess(value: boolean): GetUserByLoginnameResponse;
+    setSuccess(value: boolean): GetUserResponse;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetUserByLoginnameResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: GetUserByLoginnameResponse): GetUserByLoginnameResponse.AsObject;
+    toObject(includeInstance?: boolean): GetUserResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GetUserResponse): GetUserResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetUserByLoginnameResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetUserByLoginnameResponse;
-    static deserializeBinaryFromReader(message: GetUserByLoginnameResponse, reader: jspb.BinaryReader): GetUserByLoginnameResponse;
+    static serializeBinaryToWriter(message: GetUserResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetUserResponse;
+    static deserializeBinaryFromReader(message: GetUserResponse, reader: jspb.BinaryReader): GetUserResponse;
 }
 
-export namespace GetUserByLoginnameResponse {
+export namespace GetUserResponse {
     export type AsObject = {
         data?: user_user_pb.UserDetail.AsObject,
         success: boolean,

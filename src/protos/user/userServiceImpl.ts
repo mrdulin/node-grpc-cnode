@@ -1,11 +1,6 @@
-import { IUserServiceServer } from './service_grpc_pb';
+import { IUserApiServer } from './service_grpc_pb';
 import { ServerUnaryCall, sendUnaryData, ServiceError, status, Metadata } from 'grpc';
-import {
-  GetUserByLoginnameRequest,
-  GetUserByLoginnameResponse,
-  ValidateAccessTokenRequest,
-  ValidateAccessTokenResponse,
-} from './service_pb';
+import { GetUserRequest, GetUserResponse, ValidateAccessTokenRequest, ValidateAccessTokenResponse } from './service_pb';
 import { config } from '../../config';
 import axios from 'axios';
 import { UserDetail } from './user_pb';
@@ -14,14 +9,14 @@ import { UserBase } from '../share/user_pb';
 import { TopicBase } from '../share/topic_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
-export class UserServiceImpl implements IUserServiceServer {
-  public async getUserByLoginname(call: ServerUnaryCall<GetUserByLoginnameRequest>, callback: sendUnaryData<GetUserByLoginnameResponse>) {
+export class UserServiceImpl implements IUserApiServer {
+  public async getUser(call: ServerUnaryCall<GetUserRequest>, callback: sendUnaryData<GetUserResponse>) {
     const loginname = call.request.getLoginname();
     const url = `${config.CNODE_API_URL}/user/${loginname}`;
     try {
       const res = await axios.get(url);
       const data = res.data.data;
-      const grcpResponse = new GetUserByLoginnameResponse();
+      const grcpResponse = new GetUserResponse();
       grcpResponse.setSuccess(res.data.success);
       const user = new UserDetail();
       user.setAvatarUrl(data.avatar_url);

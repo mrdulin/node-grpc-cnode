@@ -8,52 +8,52 @@ import * as grpc from "grpc";
 import * as topic_service_pb from "../topic/service_pb";
 import * as topic_topic_pb from "../topic/topic_pb";
 
-interface ITopicServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
-    getTopics: ITopicServiceService_IGetTopics;
-    getTopicById: ITopicServiceService_IGetTopicById;
+interface ITopicApiService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
+    listTopics: ITopicApiService_IListTopics;
+    getTopic: ITopicApiService_IGetTopic;
 }
 
-interface ITopicServiceService_IGetTopics extends grpc.MethodDefinition<topic_service_pb.GetTopicsRequest, topic_service_pb.GetTopicsResponse> {
-    path: string; // "/topic.TopicService/GetTopics"
+interface ITopicApiService_IListTopics extends grpc.MethodDefinition<topic_service_pb.ListTopicsRequest, topic_service_pb.ListTopicsResponse> {
+    path: string; // "/topic.TopicApi/ListTopics"
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<topic_service_pb.GetTopicsRequest>;
-    requestDeserialize: grpc.deserialize<topic_service_pb.GetTopicsRequest>;
-    responseSerialize: grpc.serialize<topic_service_pb.GetTopicsResponse>;
-    responseDeserialize: grpc.deserialize<topic_service_pb.GetTopicsResponse>;
+    requestSerialize: grpc.serialize<topic_service_pb.ListTopicsRequest>;
+    requestDeserialize: grpc.deserialize<topic_service_pb.ListTopicsRequest>;
+    responseSerialize: grpc.serialize<topic_service_pb.ListTopicsResponse>;
+    responseDeserialize: grpc.deserialize<topic_service_pb.ListTopicsResponse>;
 }
-interface ITopicServiceService_IGetTopicById extends grpc.MethodDefinition<topic_service_pb.GetTopicByIdRequest, topic_service_pb.GetTopicByIdResponse> {
-    path: string; // "/topic.TopicService/GetTopicById"
+interface ITopicApiService_IGetTopic extends grpc.MethodDefinition<topic_service_pb.GetTopicRequest, topic_service_pb.GetTopicResponse> {
+    path: string; // "/topic.TopicApi/GetTopic"
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<topic_service_pb.GetTopicByIdRequest>;
-    requestDeserialize: grpc.deserialize<topic_service_pb.GetTopicByIdRequest>;
-    responseSerialize: grpc.serialize<topic_service_pb.GetTopicByIdResponse>;
-    responseDeserialize: grpc.deserialize<topic_service_pb.GetTopicByIdResponse>;
+    requestSerialize: grpc.serialize<topic_service_pb.GetTopicRequest>;
+    requestDeserialize: grpc.deserialize<topic_service_pb.GetTopicRequest>;
+    responseSerialize: grpc.serialize<topic_service_pb.GetTopicResponse>;
+    responseDeserialize: grpc.deserialize<topic_service_pb.GetTopicResponse>;
 }
 
-export const TopicServiceService: ITopicServiceService;
+export const TopicApiService: ITopicApiService;
 
-export interface ITopicServiceServer {
-    getTopics: grpc.handleUnaryCall<topic_service_pb.GetTopicsRequest, topic_service_pb.GetTopicsResponse>;
-    getTopicById: grpc.handleUnaryCall<topic_service_pb.GetTopicByIdRequest, topic_service_pb.GetTopicByIdResponse>;
+export interface ITopicApiServer {
+    listTopics: grpc.handleUnaryCall<topic_service_pb.ListTopicsRequest, topic_service_pb.ListTopicsResponse>;
+    getTopic: grpc.handleUnaryCall<topic_service_pb.GetTopicRequest, topic_service_pb.GetTopicResponse>;
 }
 
-export interface ITopicServiceClient {
-    getTopics(request: topic_service_pb.GetTopicsRequest, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicsResponse) => void): grpc.ClientUnaryCall;
-    getTopics(request: topic_service_pb.GetTopicsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicsResponse) => void): grpc.ClientUnaryCall;
-    getTopics(request: topic_service_pb.GetTopicsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicsResponse) => void): grpc.ClientUnaryCall;
-    getTopicById(request: topic_service_pb.GetTopicByIdRequest, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicByIdResponse) => void): grpc.ClientUnaryCall;
-    getTopicById(request: topic_service_pb.GetTopicByIdRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicByIdResponse) => void): grpc.ClientUnaryCall;
-    getTopicById(request: topic_service_pb.GetTopicByIdRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicByIdResponse) => void): grpc.ClientUnaryCall;
+export interface ITopicApiClient {
+    listTopics(request: topic_service_pb.ListTopicsRequest, callback: (error: grpc.ServiceError | null, response: topic_service_pb.ListTopicsResponse) => void): grpc.ClientUnaryCall;
+    listTopics(request: topic_service_pb.ListTopicsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: topic_service_pb.ListTopicsResponse) => void): grpc.ClientUnaryCall;
+    listTopics(request: topic_service_pb.ListTopicsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: topic_service_pb.ListTopicsResponse) => void): grpc.ClientUnaryCall;
+    getTopic(request: topic_service_pb.GetTopicRequest, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicResponse) => void): grpc.ClientUnaryCall;
+    getTopic(request: topic_service_pb.GetTopicRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicResponse) => void): grpc.ClientUnaryCall;
+    getTopic(request: topic_service_pb.GetTopicRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicResponse) => void): grpc.ClientUnaryCall;
 }
 
-export class TopicServiceClient extends grpc.Client implements ITopicServiceClient {
+export class TopicApiClient extends grpc.Client implements ITopicApiClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
-    public getTopics(request: topic_service_pb.GetTopicsRequest, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicsResponse) => void): grpc.ClientUnaryCall;
-    public getTopics(request: topic_service_pb.GetTopicsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicsResponse) => void): grpc.ClientUnaryCall;
-    public getTopics(request: topic_service_pb.GetTopicsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicsResponse) => void): grpc.ClientUnaryCall;
-    public getTopicById(request: topic_service_pb.GetTopicByIdRequest, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicByIdResponse) => void): grpc.ClientUnaryCall;
-    public getTopicById(request: topic_service_pb.GetTopicByIdRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicByIdResponse) => void): grpc.ClientUnaryCall;
-    public getTopicById(request: topic_service_pb.GetTopicByIdRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicByIdResponse) => void): grpc.ClientUnaryCall;
+    public listTopics(request: topic_service_pb.ListTopicsRequest, callback: (error: grpc.ServiceError | null, response: topic_service_pb.ListTopicsResponse) => void): grpc.ClientUnaryCall;
+    public listTopics(request: topic_service_pb.ListTopicsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: topic_service_pb.ListTopicsResponse) => void): grpc.ClientUnaryCall;
+    public listTopics(request: topic_service_pb.ListTopicsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: topic_service_pb.ListTopicsResponse) => void): grpc.ClientUnaryCall;
+    public getTopic(request: topic_service_pb.GetTopicRequest, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicResponse) => void): grpc.ClientUnaryCall;
+    public getTopic(request: topic_service_pb.GetTopicRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicResponse) => void): grpc.ClientUnaryCall;
+    public getTopic(request: topic_service_pb.GetTopicRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: topic_service_pb.GetTopicResponse) => void): grpc.ClientUnaryCall;
 }

@@ -5,8 +5,8 @@ import { config } from './config';
 // static codegen
 import { TopicServiceImpl } from './protos/topic/topicServiceImpl';
 import { UserServiceImpl } from './protos/user/userServiceImpl';
-import { ITopicServiceServer, TopicServiceService } from './protos/topic/service_grpc_pb';
-import { IUserServiceServer, UserServiceService } from './protos/user/service_grpc_pb';
+import { ITopicApiServer, TopicApiService } from './protos/topic/service_grpc_pb';
+import { IUserApiServer, UserApiService } from './protos/user/service_grpc_pb';
 
 function createServer() {
   const server = new grpc.Server();
@@ -14,8 +14,8 @@ function createServer() {
   // server.addService((topic as any).TopicService.service, topicServiceImpl);
   // server.addService((user as any).UserService.service, userServiceImpl);
   // static
-  server.addService<ITopicServiceServer>(TopicServiceService, new TopicServiceImpl());
-  server.addService<IUserServiceServer>(UserServiceService, new UserServiceImpl());
+  server.addService<ITopicApiServer>(TopicApiService, new TopicServiceImpl());
+  server.addService<IUserApiServer>(UserApiService, new UserServiceImpl());
 
   server.bind(`${config.HOST}:${config.PORT}`, grpc.ServerCredentials.createInsecure());
   server.start();
