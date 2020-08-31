@@ -2,7 +2,6 @@ import { createServer } from '../../server';
 import { ClientType, createUserServiceClient } from '../../utils/test';
 import { ServiceError } from 'grpc';
 import { GetUserByLoginnameResponse, GetUserByLoginnameRequest } from './service_pb';
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 describe('#userServiceImpl', () => {
   let server: ReturnType<typeof createServer>;
@@ -59,7 +58,10 @@ describe('#userServiceImpl', () => {
                 id: expect.any(String),
                 author: expectAuthor,
                 title: expect.any(String),
-                lastReplyAt: expect.any(google_protobuf_timestamp_pb.Timestamp),
+                lastReplyAt: {
+                  seconds: expect.any(Number),
+                  nanos: expect.any(Number),
+                },
               }),
             ]),
           );

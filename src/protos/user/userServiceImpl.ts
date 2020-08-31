@@ -53,8 +53,8 @@ export class UserServiceImpl implements IUserServiceServer {
         topic.setAuthor(author);
         return topic;
       });
-      // user.setRecentRepliesList(recentReplies);
-      // user.setRecentTopicsList(recentTopics);
+      user.setRecentRepliesList(recentReplies);
+      user.setRecentTopicsList(recentTopics);
       grcpResponse.setData(user);
       callback(null, grcpResponse);
     } catch (error) {
