@@ -3,6 +3,7 @@ import { topic, user } from '../protos';
 import { config } from '../config';
 import { TopicApiClient } from '../protos/topic/service_grpc_pb';
 import { UserApiClient } from '../protos/user/service_grpc_pb';
+import health from 'grpc-health-check';
 
 export enum ClientType {
   STATIC = 'static',
@@ -24,4 +25,8 @@ export function createUserServiceClient(type: ClientType) {
     return new (user as any).UserService(address, channelCredentials);
   }
   return new UserApiClient(address, channelCredentials);
+}
+
+export function createHealthCheckClient() {
+  return new health.Client(address, channelCredentials);
 }

@@ -7,6 +7,11 @@ import { TopicServiceImpl } from './protos/topic/topicServiceImpl';
 import { UserServiceImpl } from './protos/user/userServiceImpl';
 import { ITopicApiServer, TopicApiService } from './protos/topic/service_grpc_pb';
 import { IUserApiServer, UserApiService } from './protos/user/service_grpc_pb';
+// TODO: type-safe
+// tslint:disable-next-line: no-var-requires
+const health = require('grpc-health-check');
+// tslint:disable-next-line: no-var-requires
+const healthPB = require('grpc-health-check/v1/health_pb');
 
 function createServer() {
   const server = new grpc.Server();
@@ -16,6 +21,14 @@ function createServer() {
   // static
   server.addService<ITopicApiServer>(TopicApiService, new TopicServiceImpl());
   server.addService<IUserApiServer>(UserApiService, new UserServiceImpl());
+
+  const statusMap = {
+    'user.UserApi': healthPB.HealthCheckResponse.ServingStatus.SERVING,
+    'topic.TopicApi': healthPB.HealthCheckResponse.ServingStatus.SERVING,
+    '': healthPB.HealthCheckResponse.ServingStatus.SERVING,
+  };
+  const healthImpl = new health.Implementation(statusMap);
+  server.addService(health.service, healthImpl);
 
   server.bind(`${config.HOST}:${config.PORT}`, grpc.ServerCredentials.createInsecure());
   server.start();
